@@ -13,7 +13,7 @@ import java.util.List;
 public class PatientResource {
 
     @GET
-    public List<Patient> getById() {
+    public List<Patient> get() {
         return PatientService.getAll();
     }
 
