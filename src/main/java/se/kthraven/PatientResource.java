@@ -28,4 +28,10 @@ public class PatientResource {
     public List<Patient> getByName(@QueryParam("name") String name) {
         return PatientService.getByName(name);
     }
+
+    @GET
+    @Path("/byCondition")
+    public List<Patient> getByConditionName(@QueryParam("name") String name) {
+        return PatientService.getByConditionName(name);
+    }
 }

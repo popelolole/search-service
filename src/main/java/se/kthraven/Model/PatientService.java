@@ -13,29 +13,35 @@ import java.util.List;
 public class PatientService {
 
     public static List<Patient> getAll(){
-        List<PersonDB> personDBs = PersonPersistence.getAll();
+        List<PersonDB> personDBs = PersonPersistence.getAllPatients();
         List<Patient> patients = new LinkedList<>();
         for(PersonDB personDB : personDBs){
-            if(personDB.getRole().equals(Role.PATIENT))
-                patients.add(Patient.from(personDB));
+            patients.add(Patient.from(personDB));
         }
         return patients;
     }
 
     public static Patient getById(String id){
-        PersonDB personDB = PersonPersistence.getById(id);
+        PersonDB personDB = PersonPersistence.getPatientById(id);
         Patient patient = null;
-        if(personDB.getRole().equals(Role.PATIENT))
-            patient = Patient.from(personDB);
+        patient = Patient.from(personDB);
         return patient;
     }
 
     public static List<Patient> getByName(String name){
-        List<PersonDB> personDBs = PersonPersistence.getByName(name);
+        List<PersonDB> personDBs = PersonPersistence.getPatientByName(name);
         List<Patient> patients = new LinkedList<>();
         for(PersonDB personDB : personDBs){
-            if(personDB.getRole().equals(Role.PATIENT))
-                patients.add(Patient.from(personDB));
+            patients.add(Patient.from(personDB));
+        }
+        return patients;
+    }
+
+    public static List<Patient> getByConditionName(String name){
+        List<PersonDB> personDBs = PersonPersistence.getPatientByConditionName(name);
+        List<Patient> patients = new LinkedList<>();
+        for(PersonDB personDB : personDBs){
+            patients.add(Patient.from(personDB));
         }
         return patients;
     }
