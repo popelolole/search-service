@@ -20,7 +20,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Package with maven
-      run: mvn package
+      run: mvn clean package
     - name: Run unit tests
       run: mvn test
   publish:
